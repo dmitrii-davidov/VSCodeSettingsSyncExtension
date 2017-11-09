@@ -1,0 +1,11 @@
+{
+  "name": "vs-code-settings-sync-extension",
+  "sources": [{
+    "dir": "src",
+    "subdirs": true
+  }],
+  "bs-dependencies": [],
+  "reason": {},
+  "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
+  "refmt": 3
+}
