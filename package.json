@@ -2,9 +2,10 @@
   "name": "vs-code-settings-sync-extension",
   "version": "0.0.1",
   "scripts": {
+    "clean": "bsb -clean-world",
     "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world"
+    "build:watch": "bsb -make-world -w",
+    "start": "npm run build && node ./lib/js/src/main.js"
   },
   "keywords": [
     "BuckleScript"
