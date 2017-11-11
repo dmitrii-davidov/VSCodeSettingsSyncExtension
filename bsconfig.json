@@ -4,7 +4,7 @@
     "dir": "src",
     "subdirs": true
   }],
-  "bs-dependencies": [],
+  "bs-dependencies": ["bs-vscode"],
   "reason": {},
   "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
   "refmt": 3

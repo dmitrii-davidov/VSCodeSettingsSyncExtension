@@ -5,13 +5,19 @@
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
     "build:watch": "bsb -make-world -w",
-    "start": "npm run build && node ./lib/js/src/main.js"
+    "start": "node ./lib/js/src/main.js",
+    "start:build": "npm run build && npm run start"
   },
   "keywords": [
     "BuckleScript"
   ],
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "2.0.0"
+    "bs-platform": "2.0.0",
+    "vscode": "^1.0.0"
+  },
+  "dependencies": {
+    "bs-vscode": "glennsl/bs-vscode",
+    "github": "^12.0.1"
   }
 }
