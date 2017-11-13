@@ -1,35 +1,20 @@
-/* type api = {
-    .
-    "authenticate": unit => unit,
-}; */
-
-[@bs] class type _api = {
-    pub authenticate: unit => unit;
-};
-type api = Js.t(_api);
-
-type config = {.
-    "version" : string,
-};
-
 module Api = {
-    type t = api;
-
-    [@bs.module "github"] [@bs.new] external init : config  => t = "Api";
+  type api = {
+    .
+    "users": {. "get": unit => Js.Promise.t(int)}, "authenticate": (~token: string) => unit
+  };
+  type config = {. "version": string};
+  [@bs.module "github"] [@bs.new] external make : config => api = "Api";
 };
 
 module Service = {
-    type service = {.
-        authenticate: unit => unit,
+  type service = {. getUsers: unit => Js.Promise.t(int)};
+  let make: string => service =
+    (token) => {
+      let api = Api.make({"version": "3.0.0"});
+      let apiGetUsers = api##users##get;
+      let apiAuthenticate = api##authenticate;
+      apiAuthenticate(~token);
+      {pub getUsers = apiGetUsers}
     };
-
-    let init: string => service = (token) => {
-        /* pri token = token; */
-        let api = Api.init({"version": "3.0.0"});
-        let api_authenticate = api##authenticate;
-
-        {
-            pub authenticate = () => api_authenticate();
-        }
-    };
-}
+};
