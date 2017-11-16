@@ -12,9 +12,8 @@ module Service = {
   let make: string => service =
     (token) => {
       let api = Api.make({"version": "3.0.0"});
-      let apiGetUsers = api##users##get;
-      let apiAuthenticate = api##authenticate;
-      apiAuthenticate(~token);
-      {pub getUsers = apiGetUsers}
+      let authenticate = [@bs] api##authenticate;
+      authenticate(~token=token);
+      {pub getUsers = api##users##get }
     };
 };

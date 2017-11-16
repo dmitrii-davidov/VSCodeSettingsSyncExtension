@@ -2,15 +2,12 @@
 
 Js.log("--- Start app ---");
 
-let api = Github.Api.make({"version": "3.0.0"});
-
-Js.log(api);
-
 let service = Github.Service.make("1111");
 
-Js.log(service);
-
-Js.log(service#getUsers());
+Js.Promise.(
+    service#getUsers()
+    |> then_((i) => resolve(i))
+);
 
 open Vscode;
 
