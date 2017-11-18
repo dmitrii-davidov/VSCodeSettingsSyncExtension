@@ -6,7 +6,8 @@
     "build": "bsb -make-world",
     "build:watch": "bsb -make-world -w",
     "start": "node ./lib/js/src/main.js",
-    "start:build": "npm run build && npm run start"
+    "start:build": "npm run build && npm run start",
+    "start:debug": "node --nolazy --inspect-brk=9229 ./lib/js/src/main.js"
   },
   "keywords": [
     "BuckleScript"
